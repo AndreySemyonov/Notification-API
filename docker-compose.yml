@@ -1,0 +1,79 @@
+version: '2'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  eureka:
+    container_name: eureka
+    hostname: registration
+    build: ./eureka
+    ports:
+      - 8761:8761
+    depends_on:
+      - kafka
+
+  gateway:
+    container_name: gateway
+    build: ./gateway
+    ports:
+      - 8989:8989
+    depends_on:
+      - eureka
+      - sms
+      - email
+      - push
+
+  sms:
+    container_name: sms
+    hostname: sms-api
+    build: ./sms
+    ports:
+      - 8080:8080
+    environment:
+      KAFKA_SERVER: kafka:9092
+    depends_on:
+      - eureka
+
+
+  email:
+    container_name: email
+    hostname: email-api
+    build: ./email
+    ports:
+      - 8081:8081
+    environment:
+      KAFKA_SERVER: kafka:9092
+    depends_on:
+      - eureka
+
+
+  push:
+    container_name: push
+    hostname: push-api
+    build: ./push
+    ports:
+      - 8082:8082
+    environment:
+      KAFKA_SERVER: kafka:9092
+    depends_on:
+      - eureka
