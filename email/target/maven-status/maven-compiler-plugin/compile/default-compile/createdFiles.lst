@@ -1,0 +1,6 @@
+com\semyonov\email\entity\Customer.class
+com\semyonov\email\EmailApplication.class
+com\semyonov\email\controller\EmailController.class
+com\semyonov\email\kafka\KafkaProducer.class
+com\semyonov\email\repository\CustomerRepository.class
+com\semyonov\email\config\KafkaTopicConfig.class

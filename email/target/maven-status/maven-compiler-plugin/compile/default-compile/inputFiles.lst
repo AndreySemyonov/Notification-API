@@ -1,0 +1,6 @@
+C:\sovcom\email\src\main\java\com\semyonov\email\controller\EmailController.java
+C:\sovcom\email\src\main\java\com\semyonov\email\entity\Customer.java
+C:\sovcom\email\src\main\java\com\semyonov\email\repository\CustomerRepository.java
+C:\sovcom\email\src\main\java\com\semyonov\email\config\KafkaTopicConfig.java
+C:\sovcom\email\src\main\java\com\semyonov\email\EmailApplication.java
+C:\sovcom\email\src\main\java\com\semyonov\email\kafka\KafkaProducer.java
