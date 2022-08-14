@@ -1,0 +1,6 @@
+com\semyonov\push\kafka\KafkaProducer.class
+com\semyonov\push\entity\Customer.class
+com\semyonov\push\controller\PushController.class
+com\semyonov\push\PushApplication.class
+com\semyonov\push\config\KafkaTopicConfig.class
+com\semyonov\push\repository\CustomerRepository.class
