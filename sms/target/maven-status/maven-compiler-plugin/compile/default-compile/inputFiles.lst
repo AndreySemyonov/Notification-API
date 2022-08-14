@@ -1,0 +1,6 @@
+C:\sovcom\sms\src\main\java\com\semyonov\sms\entity\Customer.java
+C:\sovcom\sms\src\main\java\com\semyonov\sms\config\KafkaTopicConfig.java
+C:\sovcom\sms\src\main\java\com\semyonov\sms\repository\CustomerRepository.java
+C:\sovcom\sms\src\main\java\com\semyonov\sms\SmsApplication.java
+C:\sovcom\sms\src\main\java\com\semyonov\sms\kafka\KafkaProducer.java
+C:\sovcom\sms\src\main\java\com\semyonov\sms\controller\SmsController.java
